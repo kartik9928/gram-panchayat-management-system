@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Inner Page - Appland Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/index.png" rel="icon">
+  <link href="static/assets/img/index.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+ 
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="/"><b>ग्राम</b></a></h1>
+        
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+         
+
+          <li class="get-started"><a href="/verifyemail">Register</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+<!--login section-->
+{% if noexist == 1%}
+<div class="alert alert-danger" role="alert" style="position: absolute;width: 100%;">
+  <h3 style="text-align: center;">!! User Do Not Exist !!</h3>
+</div>
+{% endif %}
+    <section class="inner-page">
+      <div class="container">
+        <div class="mb-3 mt-5 text-center" style="font-size: 30px;">
+          <span>Login</span>
+        </div>
+        <div class="container-fluid">
+          <div class="row justify-content-center custom-margin">
+          <div class="col-sm-6 col-md-4">
+            <form action="" class="shadow-lg p-4" method="POST">
+              {% csrf_token %}
+              {% if noexist == 2%}
+              <span style="color:rgb(255, 0, 0); font-style: italic;">Invalid Email And Password</span>
+              {% endif %}
+            <div class="form-group">
+              <i class="fas fa-user"></i><label for="email" class="font-weight-bold pl-2">Email</label><input type="email" class="form-control" placeholder="Email" name="Email" required>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-key"></i><label for="pass" class="font-weight-bold pl-2">Password</label><input type="password" class="form-control" placeholder="Password" name="Password">
+            </div>
+            <input type="submit" class="btn btn-success mt-3 font-weight-bold btn-block shadow-sm" value="Login">
+            <div class="container">
+              <div class="row">
+                <div class="sm-12">
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-danger mt-3 font-weight-bold shadow-sm" name="reset">Forgot Password</button>
+                    <a href="/" class="btn btn-info mt-3 font-weight-bold shadow-sm">Back to Home</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+    </section>
+  </main><!-- End #main -->
+<br><br><br><br><br><br>
+  <!-- ======= Footer ======= -->
+  <footer id="footer"> 
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>GRAM MANAGAMENT SYSTEM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+       
+        Designed by <a href="#">GRAM MANAGAMENT SYSTEM</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>

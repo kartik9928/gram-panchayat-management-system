@@ -1,0 +1,35 @@
+{% include "user/includes/header.html" %}
+<div class="container">
+    <div class="col-sm-12 col-12  mt-5">
+        <div class="mt-15">
+            <center>
+                <a href="/appointmentfrom" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Appointment</a>
+            </center>
+            <h3 class="text-center mt-5">Appointment</h3><br>  
+            <table class="table" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Appointment Purpose</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{i.subject}}</td>
+                        <td>{{i.purpose}}</td>
+                        <td>{{i.date}}</td>
+                        <td>{{i.time}}</td>
+                        <td>{{i.action}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br>
+{% include "user/includes/footer.html" %}

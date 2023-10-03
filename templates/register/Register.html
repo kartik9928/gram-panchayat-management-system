@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Inner Page - Appland Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/index.png" rel="icon">
+  <link href="static/assets/img/index.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/ssets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File-->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+ <!-- my javascript -->
+ <script>
+  // this is for all the form field
+  function validate() {
+    let adhar = document.getElementById('myInput')
+    checkInput(adhar.value,adhar)
+    checkname()
+    checkadd()
+    checkpass()
+  }
+  // below code is for aadhaar
+  function checkInput(value,colorred) {
+    colorred.style.boxShadow = "";
+    const error_adhar = document.getElementById('error-adhar')
+    if (/\s/.test(value)) {
+      colorred.style.boxShadow = "0 0 5px 0 #ff0000";
+      let input = document.getElementById('myInput');
+      let value = input.value;
+      value = value.replace(/\s/g, '');
+      input.value = value;
+      error_adhar.innerHTML = "Blank space have been removed please enter only number"
+      event.preventDefault()
+    }
+    else if (isNaN(value)) {
+      colorred.style.boxShadow = "0 0 5px 0 #ff0000";
+      error_adhar.innerHTML = "Please enter the number only"
+      event.preventDefault()
+    }
+    else if (value.toString().length !== 12) {
+      colorred.style.boxShadow = "0 0 5px 0 #ff0000";
+      error_adhar.innerHTML = "Please enter a 12-digit aadhaar number."
+      event.preventDefault()
+    } 
+    else {
+      error_adhar.innerHTML = ""
+    }
+  }
+  // this is user name
+  function checkname() {
+    const name = document.getElementById('myname')
+    const error_name = document.getElementById('error-name')
+    var pattern = /^[a-zA-Z\s]*$/;
+    error_name.innerHTML = ""
+    if (!isNaN(name.value)) {
+      error_name.innerHTML = "Please enter name only"
+    } 
+    else if (!pattern.test(name.value)) {
+      document.getElementById('myname').value = name.value.replace(/[^a-zA-Z\s]/g,"")
+      error_name.innerHTML = "Input contained Special character/Number which have been removed"
+      setTimeout(() => {
+        error_name.innerHTML = ""
+      }, 2000);
+    } else if (name.value.toString().length <= 4) {
+      error_name.innerHTML = "Too short name!"
+    }
+  }
+  function checkadd() {
+    const address = document.getElementById('myaddress')
+    const error_add = document.getElementById('error-address')
+    if (address.value.toString().length <= 10) {
+      error_add.innerHTML = "Please enter full address!"
+    }
+  }
+  function checkpass(){
+    const passw = document.getElementById('password').value
+    const pass_error = document.getElementById('error_pass')
+    pass_error.innerHTML = ""
+    let e = "At least 8 characters long * Contains at least one lowercase letter * Contains at least one uppercase letter * Contains at least one digit * Contains at least one special character (such as !, @, #, etc.)"
+    if (passw.length < 8) {
+      pass_error.innerHTML = e
+    }
+    if (!/[a-z]/.test(passw)) {
+      pass_error.innerHTML = e
+    }
+    if (!/[A-Z]/.test(passw)) {
+      pass_error.innerHTML = e
+    }
+    if (!/\d/.test(passw)) {
+      pass_error.innerHTML = e
+    }
+    if (!/[\!\@\#\$\%\^\&\*\(\)\-\_\=\+\{\}\[\]\|\:\;\"\'\<\>\,\.\?\/]/.test(passw)) {
+      pass_error.innerHTML = e
+    }
+  }
+  </script>
+ <!-- my javascript ends -->
+ <!-- my css -->
+ <style>
+  p{
+    color:red;
+    font-size: 13px;
+  }
+ </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="/"><b>ग्राम</b></a></h1>
+        
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>
+         
+
+          <li class="get-started"><a class="bg-success" href="/login">Login</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+<!-- Register Sectuion-->
+    <section class="inner-page">
+      <div class="container">
+        <div class="container pt-5" id="registration">
+          <h2 class="text-center">Create an Account</h2>
+          <div class="row mt-4 mb-4">
+          <div class="col-md-6 offset-md-3">
+            <form action="" class="shadow-lg p-4" method="POST" enctype="multipart/form-data" onsubmit="validate()">
+              {% csrf_token %}
+            <div class="form-group">
+              <label for="course_img">Profile Image</label>
+              <input type="file" class="form-control-file" id="photo" name="photo" required>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <label for="name" class="font-weight-bold pl-2">Aadhaar Number</label>
+              <input type="text" class="form-control" placeholder="Aadhaar Number" name="aadhaar" onblur="checkInput(this.value,this)" id="myInput" required>
+              <p id="error-adhar"></p>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <label for="name" class="font-weight-bold pl-2">Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="Name" required onblur="checkname()" id="myname">
+              <p id="error-name"></p>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-user"></i>
+              <label for="address" class="font-weight-bold pl-2">Address</label>
+              <input type="textbox" class="form-control" placeholder="Address" name="address" required id="myaddress" onblur="checkadd()">
+              <p id="error-address"></p>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-key"></i>
+              <label for="pass" class="font-weight-bold pl-2">Password</label>
+              <input type="password" id="password" class="form-control" placeholder="Password" name="Password" required onblur="checkpass()">
+              <p id="error_pass"></p>
+            </div>
+            <input type="submit" class="btn btn-primary mt-5 btn-block shadow-sm font-weight-bold" name="Register" value="Register">
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>GRAM MANAGAMENT SYSTEM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+       
+        Designed by <a href="#">GRAM MANAGAMENT SYSTEM</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>

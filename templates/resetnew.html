@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Password reset</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/index.png" rel="icon">
+  <link href="static/assets/img/index.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+ 
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+         
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+<!--login section-->
+{% if noexist == 1%}
+<div class="alert alert-danger" role="alert" style="position: absolute;width: 100%;">
+  <h3 style="text-align: center;">!! User Do Not Exist !!</h3>
+</div>
+{% endif %}
+    <section class="inner-page">
+      <div class="container">
+        <div class="mb-3 mt-5 text-center" style="font-size: 30px;">
+          <span>Password Reset</span>
+        </div>
+        <div class="container-fluid">
+          <div class="row justify-content-center custom-margin">
+          <div class="col-sm-6 col-md-4">
+            <form action="" class="shadow-lg p-4" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                <i class="fas fa-user"></i><label for="email" class="font-weight-bold pl-2"></label>
+                </div>
+                <div class="form-group">
+                <i class="fas fa-key"></i><label for="pass" class="font-weight-bold pl-2">Set New Password</label><input type="password" class="form-control" placeholder="Password" name="newpass">
+                </div>
+                <input type="submit" class="btn btn-success mt-3 font-weight-bold btn-block shadow-sm" value="Reset">
+            </form>
+            <!-- <div class="container">
+              <div class="row">
+                <div class="sm-12">
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-danger mt-3 font-weight-bold shadow-sm" name="reset">Forgot Password</button>
+                    <a href="/" class="btn btn-info mt-3 font-weight-bold shadow-sm">Back to Home</a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  </main><!-- End #main -->
+<br><br><br><br><br><br>
+  <!-- ======= Footer ======= -->
+  <!-- <footer id="footer"> 
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>GRAM MANAGAMENT SYSTEM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+       
+        Designed by <a href="#">GRAM MANAGAMENT SYSTEM</a>
+      </div>
+    </div>
+  </footer> -->
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+  <!--  -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{% include "user/includes/header.html" %}
+
+<div class="container">
+    <div class="col-sm-12 col-12  mt-5">
+        <h3 class="text-center mt-5">Notice</h3><br>
+        <table class="table"  border="1">
+            <thead>
+                <tr>
+                    <th scope="col">Notice Name</th>
+                    <th scope="col">Post Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.n_name}}</td>
+                    <td>{{i.n_date}}</td>
+                    <td>{{i.n_detail}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "user/includes/footer.html" %}

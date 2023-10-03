@@ -1,0 +1,26 @@
+{% include "user/includes/header.html" %}
+<div class="container">
+    <div class="col-sm-12 col-12  mt-5">
+        <h3 class="text-center mt-5">Schemes</h3><br>  
+        <table class="table"  border="1">
+            <thead>
+                <tr>
+                    <th scope="col">Schemes Id</th>
+                    <th scope="col">Scheme Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.s_id}}</td>
+                    <td>{{i.s_name}}</td>
+                    <td>{{i.s_detail}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div> 
+
+{% include "user/includes/footer.html" %}

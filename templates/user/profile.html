@@ -1,0 +1,41 @@
+
+{% include "user/includes/header.html" %}
+<section class="inner-page">
+  <div class="container ">
+  <div class="row gutters-sm ">
+            <div class="col-lg-12 col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center ">
+                    <img src="{{data.image}}" alt="Admin" class="rounded-circle" width="150"><br>
+                    <div class="mt-3">
+                      
+                      <table border='1'>
+                      <tr>
+                      <th>Name</th>
+                      <td><h4>{{data.name}}</h4></td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                        <td><p class="text-secondary mb-1">{{data.email}}</p></td>
+                      </tr>
+                      <tr>
+                      <th>Address</th>
+                      <td><p class="text-muted font-size-sm">{{data.address}}</p></td>
+                      </tr>
+                      </table>
+                    </div><br>
+                    <!-- <center>
+                      <a href="#" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Edit Profile</a>
+                   </center> -->
+                  </div>
+                </div>
+              </div>
+      
+
+    </div>
+  </div>
+</section>
+
+</main><!-- End #main -->
+{% include "user/includes/footer.html" %}

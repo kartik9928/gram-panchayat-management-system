@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Inner Page - Appland Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/index.png" rel="icon">
+  <link href="static/assets/img/index.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+  <!-- jacscript for 4 digits OTP -->
+  <script>
+    function otpcheck(){
+      const error = document.getElementById('error')
+      const digit = document.getElementById('digit').value
+      if (/\s/.test(digit)) {
+        let input = document.getElementById('digit');
+        let value = input.value;
+        value = value.replace(/\s/g, '');
+        input.value = value;
+        event.preventDefault()
+      }
+      else if (isNaN(digit)) {
+        error.innerHTML = "Please enter OTP only"
+        event.preventDefault()
+      }
+      else if (digit.toString().length !== 4) {
+        error.innerHTML = "Please enter 4-digits OTP"
+        event.preventDefault()
+      } else {
+        error.innerHTML = ""
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="/"><b>ग्राम</b></a></h1>
+        
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+<!--login section-->
+{% if otpver == 1%}
+<div class="alert alert-danger" role="alert" style="position: absolute;width: 100%;">
+  <h3 style="text-align: center;">!! Invalid OTP !!</h3>
+</div>
+{% endif %}
+    <section class="inner-page">
+      <div class="container">
+        <div class="mb-3 mt-5 text-center" style="font-size: 40px;">
+          <span>OTP</span>
+        </div>
+        <div class="container-fluid">
+          <div class="row justify-content-center custom-margin">
+          <div class="col-sm-6 col-md-10" style="text-align: center;">
+            <h4>
+              To activate your GramPanchyat account an OTP have been sent to you through your registered mail<br><br>
+              Please enter the OTP to activat your account<br><br>
+              If you don't enter OTP your account will not get register <br><br>
+              <!-- <p style="color: red;">OTP will be expire in 5 min</p> -->
+            </h4>
+            <div class="container col-sm-6 col-md-4">
+            <div class="row">
+            <div class="sm-12">
+            <div class="text-center">
+                <a href="/" class="btn btn-info mt-3 font-weight-bold shadow-sm">Back to Home</a>
+                <button type="button" class="btn btn-info mt-3 font-weight-bold shadow-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Verify Account</button>
+            </div>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+<br><br><br><br><br><br>
+  <!-- ======= Footer ======= -->
+  <footer id="footer"> 
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>GRAM MANAGAMENT SYSTEM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+       
+        Designed by <a href="#">GRAM MANAGAMENT SYSTEM</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+  <!-- Popup box start -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">OTP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post"  onsubmit="otpcheck()">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Enter OTP :</label>
+              <input type="text" class="form-control" id="digit" name="otpenter" onblur="otpcheck()">
+              <p id="error" style="color: rgb(255, 0, 0);"></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name="reset" data-dismiss="modal">Re-Send</button>
+              <button type="submit" class="btn btn-primary" name="otpbox">Verify</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- popup box end -->
+</body>
+
+</html>

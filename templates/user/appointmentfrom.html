@@ -1,0 +1,53 @@
+{% include "user/includes/header.html" %}
+
+<script>
+  function formcheck() {
+    checksub()
+    checkpur()
+  }
+  function checksub() {
+    const my_para = document.getElementById('mysub')
+    const error_para = document.getElementById('suberror')
+    if (my_para.value.toString().length >= 20) {
+      error_para.innerHTML = "Please mention subject in minimum words"
+    }
+  }
+  function checkpur() {
+    const my_pur = document.getElementById('mypur')
+    const error_pur = document.getElementById('purerror')
+    if (my_pur.value.toString().length >= 50) {
+      error_pur.innerHTML = "Please mention purpose in minimum words"
+    }
+  }
+</script>
+
+<section class="inner-page">
+  <div class="container ">
+    <div class="container " >
+      <h2 class="text-center">Appointment Form</h2>
+      <div class="row ">
+        <div class="col-md-6 offset-md-3">
+          <form action="" class="shadow-lg p-4" method="POST" enctype="multipart/form-data" onsubmit="formcheck()">
+            {% csrf_token %}
+            <div class="form-group">
+              <i class="fas fa-user"></i> <label for="subject" class="font-weight-bold pl-2">subject</label>
+              <input type="text" class="form-control" placeholder="subject" name="subject" Required id="mysub" onblur="checksub()">
+              <p id="suberror"></p>
+            </div>
+            <div class="form-group">
+              <i class="fas fa-user"></i> <label for="appointment" class="font-weight-bold pl-2">Appointment Purpose</label>
+              <input type="text" class="form-control" placeholder="Appointment Purpose" name="Appointment" required id="mypur" onblur="checkpur()">
+              <p id="purerror"></p>
+            </div>
+            <div class="form-group">
+            </label><input type="hidden" class="form-control" name="alert" value="Not_accepted" >
+          </div>
+          <button type="submit" class="btn btn-primary mt-5 btn-block shadow-sm font-weight-bold" name="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+{% include "user/includes/footer.html" %}

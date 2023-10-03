@@ -1,0 +1,59 @@
+<?php
+
+include('includes/header.php');
+include('../dbconnection.php');
+session_start();
+if($_SESSION['is_login']){
+    $Email = $_SESSION['Email'];
+}else{
+    echo "<script> location.href='../index.php';</script>";
+}
+
+?>
+
+<!-- Start 2nd COlumn -->
+<div class="container">
+<div class="col-sm-12 col-12  mt-5">
+  <center><h2>Budget History</h2></center>  <br>
+ <?php
+  $sql = "SELECT * FROM bugets_tb";
+  $result = $conn->query($sql);
+  if($result->num_rows > 0) {
+   echo '<table class="table"  border="1">';
+    echo '<thead>';
+     echo '<tr>';
+      echo '<th scope="col">Budget Name</th>';
+      echo '<th scope="col">Total Amount</th>';
+      
+      echo '<th scope="col">Action</th>';
+     echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+     while ($row = $result->fetch_assoc()){
+      echo '<tr>';
+       echo '<td>'.$row['b_name'].'</td>';
+       echo '<td>'.$row['t_amount'].'</td>';
+       
+       echo '<td>';
+        echo '<form action="view_b_bill.php" method="POST" class="d-inline mr-2">';
+         echo '<input type="hidden" name="b_id" value='.$row['b_id'].'><button class="btn btn-warning" name="view" value="View" type="submit">View</i></button>';
+        echo '</form>';
+       echo '</td>';
+      echo '</tr>';
+     }
+    echo '</tbody>';
+   echo '</table>';
+  } else{
+   echo '0 Result';
+  }
+  if(isset($_REQUEST['delete'])){
+  $sql= "DELETE FROM bugets_tb WHERE b_id = {$_REQUEST['b_id']}";
+  if($conn->query($sql) == TRUE){
+   echo '<meta http-equiv="refresh" content= "0;URL=?deleted" />';
+  } else {
+   echo "Unable to Delete Data";
+  }
+  }
+ ?>
+</div> 
+</div><!-- End 2nd COlumn -->
